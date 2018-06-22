@@ -10,8 +10,8 @@
  *                                                                                                                                 A3 = 17
  *                                                                                                                                 A4 = 18
  *                                                                                                                                 A5 = 19
- *                                                                                                                                 A6 = 20
- *                                                                                                                                 A7 = 21
+ *                                                                                                                                 A6 = doesn`t
+ *                                                                                                                                 A7 = doesn`t
  * The encoder, display and output connections are described in the code.
  * My Github : https://github.com/machmar 
  * Marek Mach 2018 Licensed under GNU GPLv3.
@@ -24,9 +24,10 @@ SevSeg sevseg;
 Encoder encoder(14, 2); // select pins that is the encoder connected to (the order doen`t matter)
 
 int output = 16;  //clock output (you can also connect an LED with a 1k resistor to signalize the bpm)
-int reverseDelay; //
-int encoderData = 100;
+int reverseDelay; //this is the variable that controls the delay between output being high and low
+int encoderData = 1;  //
 int outputState = LOW;
+int coderButton = 17;
 
 unsigned long previousMillis = 0;
 
@@ -44,12 +45,13 @@ void setup() {
   Serial.begin(9600); //starts on serial connection
 
   pinMode(output, OUTPUT);
+  pinMode(coderButton,INPUT_PULLUP);
 }
 
 long positionLeft  = -999; //I don`t know what is this but it was in the example sketch.
 
 void loop() {
-  encoderData = encoder.read() / 4 + 100; //this converts the raw encoder data to usable data, the /4 is there because when there was nothing my encoder 
+  encoderData = encoder.read() / 2 + 100; //this converts the raw encoder data to usable data, the /2 is there because when there was nothing my encoder 
                                           //was adding four numbers per step instead of one
                                           //the +100 sets the bpm that the arduino starts with - change it to make arduino start with different bpm
   
