@@ -40,15 +40,13 @@ void setup() {
 
   sevseg.begin(COMMON_ANODE, numDigits, digitPins, segmentPins);  //if you have a display with common cathode than change the COMMON_ANODE to COMMON_CATHODE
   sevseg.setBrightness(10); //higher brightnes means more flicker of the screen, I don`t know why
-  attachInterrupt (2, countChange, CHANGE); //this is the interrupt for the encoder that activate thecountChange void when you move the encoder
+  attachInterrupt (2, countChange, CHANGE); //this is the interrupt for the encoder that activate the countChange void when you move the encoder
 
-  Serial.begin(9600); //starts on serial connection
+  Serial.begin(9600); //starts serial connection
 
   pinMode(output, OUTPUT);
   pinMode(coderButton,INPUT_PULLUP);
 }
-
-long positionLeft  = -999; //I don`t know what is this but it was in the example sketch.
 
 void loop() {
   encoderData = encoder.read() / 2 + 100; //this converts the raw encoder data to usable data, the /2 is there because when there was nothing my encoder 
@@ -81,7 +79,7 @@ void tick() { //this is a copy of blink without delay arduino example - only the
   }
 }
 void countChange() { //this is an interrupt part that reacts to the encoder immediately but it is just a copy of void loop without serial and tick part
-  encoderData = encoder.read() / 4 + 100;
+  encoderData = encoder.read() / 2 + 100;
   sevseg.setNumber(encoderData);
   sevseg.refreshDisplay();
   reverseDelay = 60000 / encoderData;
