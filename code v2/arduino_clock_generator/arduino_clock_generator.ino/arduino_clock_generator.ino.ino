@@ -477,6 +477,7 @@ void loop() {
         normalClick = 0;
         bpmMultiply = 1;
         bpmDivide = 1;
+        swing = 50;
       }
     }
     if (menuEncoderVar3 == 2) menuEncoderVar3 = 1;
