@@ -17,8 +17,8 @@
  * Marek Mach 2018 Licensed under GNU GPLv3.
  */
 
-#include <Encoder.h>  //include encoder library
-#include <SevSeg.h> //include sevn segment library
+#include <Encoder.h>  //include encoder library https://www.arduinolibraries.info/libraries/encoder
+#include <SevSeg.h> //include sevn segment library https://github.com/DeanIsMe/SevSeg
 
 SevSeg sevseg;
 Encoder encoder(14, 2); // select pins that is the encoder connected to (the order doen`t matter)
