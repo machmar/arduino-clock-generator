@@ -17,10 +17,10 @@
    Marek Mach 2018 Licensed under GNU GPLv3.
 */
 
-#include <Rotary.h>
-#include <SevSeg.h>
-#include <OneButton.h>
-#include <EEPROM.h>
+#include <Rotary.h> //https://github.com/brianlow/Rotary
+#include <SevSeg.h> //https://github.com/DeanIsMe/SevSeg
+#include <OneButton.h> //https://github.com/mathertel/OneButton
+#include <EEPROM.h> //included with arduino IDE
 SevSeg sevseg;
 Rotary encoder = Rotary(14, 2); // select pins that is the encoder connected to (the order doen`t matter)
 
